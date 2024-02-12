@@ -3,6 +3,6 @@ This is just a fun side project, I created it during my free time.
 
 # Small Projects
 
-🔗 [Carousel](https://marvelcollin.github.io/Website-Dumpy/Carousel)    
-🔗 [Drag And Drop](https://marvelcollin.github.io/Website-Dumpy/DragAndDrop)      
-🔗 [Expanding Cards](https://marvelcollin.github.io/Website-Dumpy/ExpandingCards)     
+| No. | Projects | Live Website | 
+|--| ---------- | --- | 
+| 1 | [Carousel](https://github.com/MarvelCollin/Website-Dumpy/tree/main/Carousel)   | [Live Web](https://marvelcollin.github.io/Website-Dumpy/Carousel)  | 
