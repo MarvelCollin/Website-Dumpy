@@ -1,0 +1,28 @@
+.container {
+    width: auto;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.card {
+    background-color: grey;
+    color: grey;
+    width: 3%;
+    height: 40%;
+    border-radius: 30px;
+    display: flex;
+    transition-duration: 1s;
+    justify-content: center;
+    align-items: center;
+}
+
+.active {
+    transition-duration: 2s;
+    width: 10%;
+    color: white;   
+}

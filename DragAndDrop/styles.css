@@ -1,0 +1,24 @@
+.drag-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+}
+
+.draggable {
+  width: 100px;
+  height: 50px;
+  background-color: #f44336;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  cursor: move;
+}
+
+.dropzone {
+  width: 150px;
+  height: 150px;
+  border: 2px dashed #ccc;
+  text-align: center;
+  line-height: 150px;
+}
