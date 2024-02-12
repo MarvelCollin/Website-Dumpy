@@ -1,5 +1,6 @@
 # About
 This is just a fun side project, I created it during my free time.
+Anyway.. Feel free to use my code :>
 
 # Small Projects
 
