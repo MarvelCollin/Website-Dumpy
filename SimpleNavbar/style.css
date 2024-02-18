@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 0px 10px;
+}
+
+/* lapisan paling luar dan kita pakai space-between supaya memberikan jarak
+antar div didalamnya */
+.nav-container {
+    margin: 0;
+    /* 0px 10px sama seperti padding top & down = 0, 
+    padding right & left = 10px */
+    padding: 0px 10px;
+    width: auto;
+    height: 55px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    background-color: grey;
+
+    /* font-family ini untuk mengganti font style kita */
+    font-family: "Verdana", "Courier New", monospace;
+    font-weight: bold;
+}
+
+.navigation-items-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+/* some simple animation */
+a:hover {
+    /* transation bisa kita anggap sebagai "selama 
+    berapa lama dia akan berubah menjadi warna hitam" */
+    transition: 1s;
+    color:black;    
+}
+

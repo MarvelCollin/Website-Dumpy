@@ -1,4 +1,7 @@
 .drag-container {
+  height: 100vh;
+  width: auto;
+  position: absolute;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -21,4 +24,8 @@
   border: 2px dashed #ccc;
   text-align: center;
   line-height: 150px;
+}
+
+.hide {
+  display: none;
 }

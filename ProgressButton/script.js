@@ -14,11 +14,10 @@ function update(){
     } else {
         nextButton.style.backgroundColor = "green";
         prevButton.style.backgroundColor = "green";
-        
     }
 
     let j = 0;
-
+    
     while(j < i){
         progress[j].style.border = "5px solid green";
         j++;
