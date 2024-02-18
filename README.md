@@ -12,4 +12,4 @@ Anyway.. Feel free to use my code :>
 | 03 | [Following Cursor](https://github.com/MarvelCollin/web-design/tree/main/FollowingCursor)   | [Live Website](https://marvelcollin.github.io/web-design/FollowingCursor)  | 
 | 04 | [Expanding Cards](https://github.com/MarvelCollin/web-design/tree/main/ExpandingCards)   | [Live Website](https://marvelcollin.github.io/web-design/ExpandingCards)  | 
 | 05 | [Progress Button](https://github.com/MarvelCollin/web-design/tree/main/ProgressButton)   | [Live Website](https://marvelcollin.github.io/web-design/ProgressButton)  | 
-| 05 | [Simple Navigation Bar](https://github.com/MarvelCollin/web-design/tree/main/SimpleNavbar)   | [Live Website](https://marvelcollin.github.io/web-design/SimpleNavbar)  | 
+| 05 | [Simple Navigation Bar](https://github.com/MarvelCollin/web-design/tree/main/SimpleNavbar)   | [Live Website](https://marvelcollin.github.io/web-design/SimpleNavbar/)  | 
