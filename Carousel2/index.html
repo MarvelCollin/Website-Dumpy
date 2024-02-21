@@ -11,6 +11,13 @@
 <body>
     <div class="carousel">
         <div class="carousel-container">
+            <div class="button">
+                <!-- kita buat button previous dan nextnya-->
+                <button id="prev-button" onclick="prevSlide()">Prev</button>
+                <!-- prevSlide() dan nextSlide() adalah function yang kita buat di 
+                    javasript kita nanti -->
+                <button id="next-button" onclick="nextSlide()">Next</button>
+            </div>
             <div class="carousel-items hidden">
                 <img src="images/image1.jpeg" alt="">
             </div>
@@ -19,14 +26,15 @@
             </div>
             <div class="carousel-items">
                 <img src="images/image3.jpeg" alt="">
+                <button class="left-arrow arrow" onclick="prevSlide()">&#10094;</button>
             </div>
+
+                <!-- panah kiri dan kanan kalian bisa pakai ini dan hilangkan button yang
+                diatas -->
+                <!-- <button class="right-arrow arrow" onclick="nextSlide()">&#10095;</button> -->
         </div>
-        <!-- kita buat button previous dan nextnya-->
-        <button id="prev-button" onclick="prevSlide()">Previous</button>
-        <!-- prevSlide() dan nextSlide() adalah function yang kita buat di 
-        javasript kita nanti -->
-        <button id="next-button" onclick="nextSlide()">Next</button>
     </div>
 </body>
 <script src="script.js"></script>
+
 </html>

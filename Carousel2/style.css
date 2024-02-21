@@ -1,10 +1,63 @@
 .carousel {
-    /* kita bakalan atur carousel ini 
+  /* kita bakalan atur carousel ini 
     untuk terletak ditengah web kita ya */
-    width: auto;
-    height: 100vh;
+  width: auto;
+  height: 100vh;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* kita centerkan menggunakan rumus paling gacor */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-items img {
+  /* kita buat imagesnya constant */
+  width: 600px;
+  height: 300px;
+}
+
+.button {
+  /* kita buat supaya next sama prevnya dikiri dan dikanan */
+  display: flex;
+  justify-content: space-between;
+  /* kasi jarak dengan element lain  */
+  padding: 5px 10px;
+}
+
+/* ini opsional sih untuk rapi aja */
+#prev-button,
+#next-button {
+  background-color: grey;
+  color: white;
+  box-shadow: none;
+  border: none;
+  padding: 10px;
+  border-radius: 20%;
+  transition: 1s;
+}
+
+/* # digunakan untuk id */
+
+/* animasi pada saat hover button  */
+#prev-button:hover,
+#next-button:hover {
+  transition: 1s;
+  background-color: green;
+  scale: 1.1;
+}
+
+.arrow {
+  position: absolute;
+  /* transform: translateY(-50%); */
+  top: 50%;
+  background-color: red;
+}
+
+.left-arrow {
+  left: 25%;
+}
+
+.rigth-arrow {
+  right: 50;
+  background-color: blue !important;
 }
