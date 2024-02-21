@@ -1,0 +1,10 @@
+.carousel {
+    /* kita bakalan atur carousel ini 
+    untuk terletak ditengah web kita ya */
+    width: auto;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
