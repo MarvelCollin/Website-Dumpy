@@ -8,20 +8,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.carousel-container{
+    width: 600px;
+}
+
+.image-container {
+    position: relative;
 }
 
 .carousel-items img {
   /* kita buat imagesnya constant */
-  width: 600px;
+  width: 100%;
   height: 300px;
 }
 
 .button {
   /* kita buat supaya next sama prevnya dikiri dan dikanan */
+  width: 100%;
   display: flex;
   justify-content: space-between;
   /* kasi jarak dengan element lain  */
-  padding: 5px 10px;
+  margin : 10px 0;
 }
 
 /* ini opsional sih untuk rapi aja */
@@ -47,17 +57,28 @@
 }
 
 .arrow {
-  position: absolute;
-  /* transform: translateY(-50%); */
-  top: 50%;
-  background-color: red;
+    position: absolute; 
+    font-size: 100px;
+    top: 50%; 
+    transform: translateY(-50%); 
+    background-color: transparent;
+    border: none;
+    color: transparent; 
+    padding: 10px;
+    z-index: 1; 
+    height: 100%;
+    transition: 1s;
+}
+
+.arrow:hover {
+    transition: 1s;
+    color: grey;
 }
 
 .left-arrow {
-  left: 25%;
+  left: 0;
 }
 
-.rigth-arrow {
-  right: 50;
-  background-color: blue !important;
+.right-arrow  {
+  right: 0;
 }
