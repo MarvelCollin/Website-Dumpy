@@ -14,11 +14,18 @@
     <button id="btn">Button</button>
 
     <script>
+        // $("#words").slideUp(1000).delay(1000).slideDown(1000)
+
+        /* $("#btn").on("mouseenter", function(){
+            $("#words").slideToggle(1000)
+        }) */
+
         $(document).keydown(function (e) {
             if (e.key === 'd' || e.key === 'D') {
-                $("#words").slideToggle(1000);
+                $("#words").slideToggle(1000)
             }
-        });
+        })
+
     </script>
 </body>
 
