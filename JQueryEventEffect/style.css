@@ -1,0 +1,31 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+p {
+    padding: 10px;
+    background-color: green;
+    color: white;
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: grey;
+    transition: 0.4s;
+    color: white;
+}
+
+button:hover {
+    transition: 0.4s;
+    background-color: green;
+}

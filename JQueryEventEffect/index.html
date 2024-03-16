@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <p id="words">This is a paragraph.</p>
+    <button id="btn">Button</button>
+
+    <script>
+        $(document).keydown(function (e) {
+            if (e.key === 'd' || e.key === 'D') {
+                $("#words").slideToggle(1000);
+            }
+        });
+    </script>
+</body>
+
+</html>
