@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Carousel</title>
+    <title>Image Slider | Carousel </title>
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <div class="carousel">
         <div class="slides">
@@ -16,59 +17,56 @@
             <img src="images/ryuu.jpeg" alt="Image 3">
             <img src="images/stiphen.jpeg" alt="Image 4">
             <img src="images/wills.jpeg" alt="Image 5">
+            <p id="index"></p>
         </div>
-        <button class="prev">baliq</button>
+        <button class="prev">prev</button>
         <button class="next">next</button>
     </div>
 
     <script>
-        $(document).ready(function () {
-            var slides = $("img");
-            var totalSlides = slides.length;
-            var currentIndex = 0;
-        
-            // Fungsi untuk menampilkan slide berikutnya
-            function showNextSlide() {
-                currentIndex++;
-                if (currentIndex >= totalSlides) {
-                    currentIndex = 0; // Jika sudah sampai di slide terakhir, kembali ke slide pertama
+        $(document).ready(function(){
+            var slides = $("img")
+            var index = 0
+            var lastIndex = slides.length - 1
+
+            function show(){
+                $("#index").text(index)
+                slides.hide().eq(index).show()
+            }
+
+            show()
+
+            $(".next").click(function(){
+                index++
+                if(index > lastIndex){
+                    index = 0
                 }
-                updateSlide();
-            }
-        
-            // Fungsi untuk menampilkan slide sebelumnya
-            function showPrevSlide() {
-                currentIndex--;
-                if (currentIndex < 0) {
-                    currentIndex = totalSlides - 1; // Jika sudah sampai di slide pertama, kembali ke slide terakhir
+                clearInterval(interval)
+                show()
+                interval = setInterval(autoNext, 2000)
+            })
+
+            $(".prev").click(function(){
+                index--
+                if(index < 0){
+                    index = lastIndex
                 }
-                updateSlide();
+                clearInterval(interval)
+                show()
+                interval = setInterval(autoNext, 2000)
+            })
+
+            function autoNext(){
+                index++
+                if(index > lastIndex){
+                    index = 0
+                }
+                show()
             }
-        
-            // Fungsi untuk memperbarui tampilan slide
-            function updateSlide() {
-                slides.hide().eq(currentIndex).show();
-            }
-        
-            // Menampilkan slide pertama kali saat halaman dimuat
-            updateSlide();
-        
-            // Mengatur interval untuk berpindah slide secara otomatis setiap 2 detik
-            var autoSlide = setInterval(showNextSlide, 2000);
-        
-            // Ketika tombol next di-klik, hentikan interval dan tampilkan slide berikutnya
-            $(".next").click(function () {
-                clearInterval(autoSlide);
-                showNextSlide();
-            });
-        
-            // Ketika tombol prev di-klik, hentikan interval dan tampilkan slide sebelumnya
-            $(".prev").click(function () {
-                clearInterval(autoSlide);
-                showPrevSlide();
-            });
-        });
-        
+
+            var interval = setInterval(autoNext, 2000)
+            
+        })
     </script>
 
 </body>
