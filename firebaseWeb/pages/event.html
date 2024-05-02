@@ -64,19 +64,21 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="https://source.unsplash.com/1200x800/?pudding" class="d-block w-100" alt="...">
+          <img src="https://source.unsplash.com/1200x800/?pudding" class="d-block w-100" alt="Pudding 1">
         </div>
         <div class="carousel-item">
-          <img src="https://source.unsplash.com/1200x800/?pudding,festival" class="d-block w-100" alt="...">
+          <img src="../assets/people2.jpeg" class="d-block w-100" alt="Pudding 2">
         </div>
         <div class="carousel-item">
-          <img src="../assets/people1.jpg" class="d-block w-100" alt="...">
+          <img src="https://source.unsplash.com/1200x800/?pudding,event" class="d-block w-100"
+            alt="Pudding 3">
         </div>
         <div class="carousel-item">
-          <img src="../assets/people2.jpg" class="d-block w-100" alt="...">
+          <img src="../assets/people1.jpg" class="d-block w-100" alt="Pudding 4">
         </div>
         <div class="carousel-item">
-          <img src="https://source.unsplash.com/1200x800/?pudding" class="d-block w-100" alt="...">
+          <img src="https://source.unsplash.com/1200x800/?pudding,food" class="d-block w-100"
+            alt="Pudding 5">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -89,6 +91,7 @@
       </a>
     </div>
   </div>
+
 
   <div class="container timeline">
     <div class="row">
@@ -116,7 +119,39 @@
     </div>
   </div>
 
-  <footer class="footer text-center">
+  <div class="container registration-form mt-5">
+    <h2 class="text-center mb-4">Form Registrasi</h2>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" >
+        <div id="emailError" class="text-danger"></div>
+      </div>
+      <div class="form-group">
+        <label for="inputNama">Nama</label>
+        <input type="text" class="form-control" id="inputNama"  minlength="3">
+        <div id="namaError" class="text-danger"></div>
+      </div>
+      <div class="form-group">
+        <label for="inputPhone">Nomor Telepon</label>
+        <input type="tel" class="form-control" id="inputPhone" >
+        <div id="phoneError" class="text-danger"></div>
+      </div>
+      <div class="form-group">
+        <label for="inputEvent">Event yang akan diikuti</label>
+        <select class="form-control" id="inputEvent" >
+          <option value="" disabled selected>Pilih Event</option>
+          <option value="Pudding Tasting">Pudding Tasting</option>
+          <option value="Pudding Making Workshop">Pudding Making Workshop</option>
+          <option value="Pudding Eating Contest">Pudding Eating Contest</option>
+        </select>
+        <div id="eventError" class="text-danger"></div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <footer class="footer text-center mt-5">
     <div class="container">
       <p>&copy; 2024 Puddang PuddingFest. All rights reserved.</p>
     </div>
@@ -125,6 +160,54 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      var email = document.getElementById('inputEmail').value;
+      var nama = document.getElementById('inputNama').value;
+      var phone = document.getElementById('inputPhone').value;
+      var event = document.getElementById('inputEvent').value;
+
+      var emailError = document.getElementById('emailError');
+      var namaError = document.getElementById('namaError');
+      var phoneError = document.getElementById('phoneError');
+      var eventError = document.getElementById('eventError');
+
+      var valid = true;
+
+      if (!email.includes('@')) {
+        emailError.textContent = 'Email harus memiliki karakter "@"';
+        valid = false;
+      } else {
+        emailError.textContent = '';
+      }
+
+      if (nama.length < 3) {
+        namaError.textContent = 'Nama harus memiliki minimal 3 karakter';
+        valid = false;
+      } else {
+        namaError.textContent = '';
+      }
+
+      if (!phone.startsWith('08') || phone.length < 11 || phone.length > 13) {
+        phoneError.textContent = 'Nomor telepon harus dimulai dengan "08" dan memiliki panjang 11-13 digit';
+        valid = false;
+      } else {
+        phoneError.textContent = '';
+      }
+
+      if (event === '') {
+        eventError.textContent = 'Harap pilih event yang akan diikuti';
+        valid = false;
+      } else {
+        eventError.textContent = '';
+      }
+
+      if (valid) {
+        event.target.submit();
+      }
+    });
+  </script>
 </body>
 
 </html>
