@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/contact.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Puddang PuddingFest</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="landingPage.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="event.html">Event</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1 class="display-4 bold">Contact Us</h1>
+            <p class="lead">Have questions? Get in touch with us!</p>
+        </div>
+    </div>
+
+    <div class="container contact-info">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Contact Information</h2>
+                <p><strong>Email:</strong> jacqueline.iman@binus.ac.id</p>
+                <p><strong>Phone:</strong> 0812123123</p>
+            </div>
+            <div class="col-md-6">
+                <h2>Send Us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="inputName">Your Name</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Your Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMessage">Message</label>
+                        <textarea class="form-control" id="inputMessage" rows="5"
+                            placeholder="Enter your message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer text-center mt-5">
+        <div class="container">
+            <p>&copy; 2024 Puddang PuddingFest. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBIlOKi4tGw5gqM8XV8hJPtIg-7avfaWxQ",
+            authDomain: "bnccfrontend-b7d68.firebaseapp.com",
+            projectId: "bnccfrontend-b7d68",
+            storageBucket: "bnccfrontend-b7d68.appspot.com",
+            messagingSenderId: "529760573068",
+            appId: "1:529760573068:web:c699ea98f5a2cb070f4da9",
+            measurementId: "G-H0MMYZS4YL"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase();
+
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var name = document.getElementById('inputName').value;
+            var email = document.getElementById('inputEmail').value;
+            var message = document.getElementById('inputMessage').value;
+
+
+            
+            push(ref(database, 'messages'), {
+                name: name,
+                email: email,
+                message: message,
+                timestamp: Date.now()
+            })
+                .then(() => {
+                    alert("Message sent successfully!");
+                    document.getElementById('inputName').value = '';
+                    document.getElementById('inputEmail').value = '';
+                    document.getElementById('inputMessage').value = '';
+                })
+                .catch((error) => {
+                    console.error("Error sending message: ", error);
+                    alert("Failed to send message. Please try again later.");
+                });
+        });
+    </script>
+</body>
+
+</html>
