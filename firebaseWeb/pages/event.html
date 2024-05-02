@@ -158,85 +158,8 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
-    import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
-    document.addEventListener('DOMContentLoaded', function() {
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyBIlOKi4tGw5gqM8XV8hJPtIg-7avfaWxQ",
-        authDomain: "bnccfrontend-b7d68.firebaseapp.com",
-        projectId: "bnccfrontend-b7d68",
-        storageBucket: "bnccfrontend-b7d68.appspot.com",
-        messagingSenderId: "529760573068",
-        appId: "1:529760573068:web:c699ea98f5a2cb070f4da9",
-        measurementId: "G-H0MMYZS4YL"
-      };
-
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
-      const database = getDatabase();
-
-      document.getElementById('registrationForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var email = document.getElementById('inputEmail').value;
-        var nama = document.getElementById('inputNama').value;
-        var phone = document.getElementById('inputPhone').value;
-        var event = document.getElementById('inputEvent').value;
-
-        var emailError = document.getElementById('emailError');
-        var namaError = document.getElementById('namaError');
-        var phoneError = document.getElementById('phoneError');
-        var eventError = document.getElementById('eventError');
-
-        var valid = true;
-
-        if (!email.includes('@')) {
-          emailError.textContent = 'Email harus memiliki karakter "@"';
-          valid = false;
-        } else {
-          emailError.textContent = '';
-        }
-
-        if (nama.length < 3) {
-          namaError.textContent = 'Nama harus memiliki minimal 3 karakter';
-          valid = false;
-        } else {
-          namaError.textContent = '';
-        }
-
-        if (!phone.startsWith('08') || phone.length < 11 || phone.length > 13) {
-          phoneError.textContent = 'Nomor telepon harus dimulai dengan "08" dan memiliki panjang 11-13 digit';
-          valid = false;
-        } else {
-          phoneError.textContent = '';
-        }
-
-        if (event === '') {
-          eventError.textContent = 'Harap pilih event yang akan diikuti';
-          valid = false;
-        } else {
-          eventError.textContent = '';
-        }
-
-        if (valid) {
-          const newRegistrationRef = push(ref(database, 'registrations'));
-          set(newRegistrationRef, {
-              email: email,
-              nama: nama,
-              phone: phone,
-              event: event
-            })
-            .then(() => {
-              console.log("Data successfully stored in Firebase");
-            })
-            .catch((error) => {
-              console.error("Error storing data: ", error);
-            });
-        }
-      });
-    });
+  <script type="module" src="../scripts/event.js">
+ 
   </script>
 
 
