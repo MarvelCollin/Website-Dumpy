@@ -1,0 +1,55 @@
+body {
+  background-color: #f8f9fa;
+  color: #343a40;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #ffffff !important;
+}
+
+.navbar {
+  background-color: #343a40;
+}
+
+.jumbotron {
+  background-image: url("https://source.unsplash.com/1600x900/?pudding");
+  background-size: cover;
+  color: #ffffff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.jumbotron h1 {
+  font-size: 3.5rem;
+
+}
+.event-description {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.event-carousel img {
+  border-radius: 10px;
+}
+
+.timeline {
+  margin-top: 50px;
+}
+
+.timeline-item {
+  margin-bottom: 50px;
+}
+
+.timeline-item .timeline-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bold {
+  font-weight: 800;
+}
