@@ -1,0 +1,15 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.particle {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  position: absolute;
+  border-radius: 50%;
+  transition: 20s;
+}
+
