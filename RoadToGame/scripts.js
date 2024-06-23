@@ -4,7 +4,7 @@ const ctx = canvas.getContext('2d');
 const idleFrameCount = 10;
 const runFrameCount = 8;
 let currentFrame = 0;
-const frameInterval = 30; // ms per frame for animation
+const frameInterval = 30; 
 let lastFrameTime = 0;
 const widthPlayer = 100;
 const heightPlayer = 100;
@@ -13,7 +13,6 @@ let y = canvas.height / 2 - heightPlayer / 2;
 const speed = 3;
 let isRunning = false;
 let isFacingRight = true;
-
 const idleImages = [];
 const runImages = [];
 
@@ -33,7 +32,8 @@ const keys = {
     w: false,
     a: false,
     s: false,
-    d: false
+    d: false,
+    q: false
 };
 
 document.addEventListener('keydown', (event) => {
@@ -44,15 +44,26 @@ document.addEventListener('keyup', (event) => {
     keys[event.key] = false;
 });
 
+function dash(isFacingRight){
+    setTimeout(() => {
+        if(isFacingRight){
+            x += speed * 8; 
+        } else {
+            x -= speed * 8; 
+        }
+    }, 1000);
+}
+
 function updatePosition() {
     isRunning = false;
+
     if (keys.w) {
         y -= speed;
         isRunning = true;
     }
     if (keys.s) {
         y += speed;
-        isRunning = true;
+        isRunning = true;x
     }
     if (keys.a) {
         x -= speed;
@@ -64,12 +75,12 @@ function updatePosition() {
         isRunning = true;
         isFacingRight = true;
     }
+    // if(keys.q){
+    //     dash(isFacingRight);
+    // }
 
     x = Math.max(0, Math.min(canvas.width - widthPlayer, x));
-    y = Math.max(0, Math.min(canvas.height - 
-        
-        
-        eightPlayer, y));
+    y = Math.max(0, Math.min(canvas.height - heightPlayer, y));
 }
 
 function drawFrame(timestamp) {
