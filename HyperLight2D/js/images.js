@@ -1,12 +1,11 @@
 import * as helper from './helper.js';
 
-const idleRight = helper.getSingleImage('player/idle/idle_right.png');
-const idleLeft = helper.getSingleImage('player/idle/idle_left.png');
+const idleSrc = '../assets/player/idle/idle_down.png';
 
-const moveLeftImages = helper.getImage('player/move/left/move_left', 12);
-const moveRightImages = helper.getImage('player/move/right/move_right', 12);
+const moveLeftSrc = helper.getSrc('player/move/left/move_left', 12);
+const moveRightSrc = helper.getSrc('player/move/right/move_right', 12);
 
-const dashImages = helper.getImage('player/dash/side/dash', 11);
-const dashAnimationImages = helper.getImage('player/dash/animation/dash_animation', 4);
+const dashSrc = helper.getSrc('player/dash/side/dash', 11);
+const dashAnimationSrc = helper.getSrc('player/dash/animation/dash_animation', 4);
 
-export {moveLeftImages, moveRightImages, idleRight, idleLeft, dashImages, dashAnimationImages};
+export {moveLeftSrc, moveRightSrc, idleSrc , dashSrc, dashAnimationSrc};
