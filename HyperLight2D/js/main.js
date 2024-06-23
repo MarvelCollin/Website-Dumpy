@@ -1,11 +1,18 @@
-import { ctx, canvas } from './ctx.js';
-import * as player from './player.js';
+import * as img from './images.js';
+import {ctx, canvas} from './ctx.js';
 
-function animate() {
+let delay = 50;
 
 
-  player.run();
+function drawPlayer(){
 
+}
+
+function animate(){
+  drawPlayer();
+  setTimeout(function(){
+    requestAnimationFrame(animate);
+  }, delay);
 }
 
 animate();
