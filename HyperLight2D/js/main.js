@@ -3,6 +3,7 @@ import { ctx, canvas } from "./ctx.js";
 
 const boostSpeedFrame = 20;
 const normalFrame = 35;
+const dashFrame = 10;
 let delay = normalFrame;
 
 let currImgPlayer = [];
@@ -22,46 +23,48 @@ let faced = 0;
 // speed config
 const normalSpeed = 12;
 const boostSpeed = 18;
-const dashSpeed = 5;
+const dashSpeed = 60;
 
 let speed = normalSpeed;
 let xPlayer = 100;
 
-let clearTimeout = 0;
+let clearTimeout = 1;
 
-let currDistance = 0;
-let dashDistance = 300;
+let currDashDistance = 0;
+let dashDistance = 200;
+
+let runImg = new Image();
 
 document.addEventListener("keydown", function () {
   keys[event.key.toLowerCase()] = true;
-  if(keys[" "]){
+  if (keys[" "]) {
     isDash = true;
-  } else {
-    if(keys["a"] || keys["d"]) {
-      isMoving = true;
-    } 
-  
-    if(keys["control"]){
-      isBoost = true;
-    }
+  }
+
+  if (keys["a"] || keys["d"]) {
+    isMoving = true;
+  }
+
+  if (keys["control"]) {
+    isBoost = true;
   }
 });
 
 document.addEventListener("keyup", function () {
   keys[event.key.toLowerCase()] = false;
 
-  if(!keys["control"]){
+  if (!keys["control"]) {
     isBoost = false;
   }
 });
 
-document.addEventListener('resize', function(){
+document.addEventListener("resize", function () {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
 
 function move() {
-  if(isBoost){
+  if (isBoost) {
     delay = boostSpeedFrame;
     speed = boostSpeed;
   } else {
@@ -74,15 +77,11 @@ function move() {
     xPlayer -= speed;
     currImgPlayer = img.moveLeftSrc;
   }
-  
+
   if (keys["d"]) {
     faced = 1;
     xPlayer += speed;
     currImgPlayer = img.moveRightSrc;
-  }
-
-  if(keys["d"] && keys["a"]){
-    isMoving = false;
   }
 
   if (!keys["a"] && !keys["d"]) {
@@ -90,42 +89,51 @@ function move() {
   }
 }
 
-function dash(){
-  if(currDistance <= dashDistance){
-    faced == 0 ? xPlayer -= dashSpeed : xPlayer += dashSpeed;
-    currDistance += dashSpeed;
+function dash() {
+  if (currDashDistance <= dashDistance) {
+    console.log('counting');
+    if (faced == 0) {
+      xPlayer -= dashSpeed;
+    } else if (faced == 1) {
+      xPlayer += dashSpeed;
+    }
+    delay = dashFrame;
+    currDashDistance += dashSpeed;
   } else {
+    delay = normalFrame;
     isDash = false;
     speed = normalSpeed;
-    currDistance = 0;
+    currDashDistance = 0;
   }
 }
 
+function draw(currImg){
+  let runImg = new Image();
 
-function clear() {
-  if(!isDash){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  }
+  runImg.src = currImg;
+
+  runImg.onload = function () {
+    if (!isDash) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    ctx.drawImage(runImg, xPlayer, 400, 100, 100);
+    ctx.fill();
+  };
 }
 
 function drawPlayer() {
-  let runImg = new Image();
+  let currSrc = idling;
 
-  if (isMoving) {
-    runImg.src = currImgPlayer[currentFramePlayer];
-    move();
-  } else if(isDash) {
-    speed = dashSpeed;
+  if (isDash) {
     dash();
+  } else if (isMoving) {
+    currSrc = currImgPlayer[currentFramePlayer];
+    move();
   } else {
-    runImg.src = idling;
+    currSrc = idling;
   }
-  
-  runImg.onload = function () {
-    setTimeout(clear(), clearTimeout);
-    ctx.drawImage(runImg, xPlayer, 400, 100,100);
-    ctx.fill();
-  };
+
+  draw(currSrc);
 
   currentFramePlayer = (currentFramePlayer + 1) % currImgPlayer.length;
 }
