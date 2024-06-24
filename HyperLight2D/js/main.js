@@ -18,6 +18,8 @@ let isMoving = false;
 let isBoost = false;
 let isDash = false;
 let isAttack = false;
+let isJumping = false;
+let attckNumber = 1;
 
 let faced = 0;
 
@@ -27,36 +29,40 @@ const dashSpeed = 30;
 
 let speed = normalSpeed;
 let xPlayer = 100;
+const floor = 600;
+let yPlayer = 600;
 
 let angle = 0;
 let xTranslate = 0;
 let yTranslate = 0;
-
 
 let clearTimeout = 1;
 
 let currDashDistance = 0;
 let dashDistance = 300;
 
+let jumpHeight = 100;
+let currHeight = 0;
+let jumpSpeed = 20;
+let goDown = false;
+
 let runImg = new Image();
 
 document.addEventListener("mousedown", function () {
   if (event.button == 0) {
     isAttack = true;
-    if(faced == 0){
+    if (faced == 0) {
       angle = 80;
-    } else if(faced == 1){
+    } else if (faced == 1) {
       angle = -80;
     }
     xTranslate = -60;
     yTranslate = -30;
-
+    delay = 1;
 
     attack();
   }
 });
-
-
 
 document.addEventListener("keydown", function () {
   keys[event.key.toLowerCase()] = true;
@@ -70,6 +76,10 @@ document.addEventListener("keydown", function () {
 
     if (keys["control"]) {
       isBoost = true;
+    }
+
+    if(keys["w"]){
+      isJumping = true;
     }
   }
 });
@@ -135,13 +145,27 @@ function dash() {
 
 function attack() {
   currImgPlayer = img.attackingSrc;
-    
-  if(currentFramePlayer >= img.attackingSrc.length - 1){
+
+  if (currentFramePlayer >= img.attackingSrc.length - 1) {
     clear();
+    delay = normalFrame;
     isAttack = false;
-    angle = 0;
-    xTranslate = 0;
-    yTranslate = 0;
+  }
+}
+
+function jump(){
+  if(currHeight <= jumpHeight && !goDown){
+    yPlayer -= jumpSpeed;
+    currHeight += jumpSpeed;
+  } else {
+    goDown = true;
+    if(currHeight > 0){
+      yPlayer += jumpSpeed;
+      currHeight -= jumpSpeed
+    } else {
+      isJumping = false;
+      goDown = false;
+    }
   }
 }
 
@@ -151,28 +175,34 @@ function draw(currImg) {
   runImg.src = currImg;
 
   runImg.onload = function () {
-    ctx.save();
     if (!isDash) {
       clear();
     }
-
     let width = runImg.width * scale;
     let height = runImg.height * scale;
     ctx.save();
-    ctx.translate(xPlayer + xTranslate + width / 2, 600 + yTranslate + height / 2);
-    ctx.rotate(angle * Math.PI / 180);
+    ctx.translate(
+      xPlayer + xTranslate + width / 2,
+      yPlayer + yTranslate + height / 2
+    );
+    ctx.rotate((angle * Math.PI) / 180);
     ctx.drawImage(runImg, -width / 2, -height / 2, width, height);
     // ctx.drawImage(runImg, xPlayer, 400, runImg.width * scale, runImg.height * scale);
     ctx.fill();
     ctx.restore();
   };
+
+  if (!isAttack) {
+    angle = 0;
+    xTranslate = 0;
+    yTranslate = 0;
+  }
 }
 
 function drawPlayer() {
   let currSrc = idling;
-  
+
   if (isAttack) {
-    console.log('attack');
     attack();
     currSrc = currImgPlayer[currentFramePlayer];
   } else if (isDash) {
@@ -186,6 +216,9 @@ function drawPlayer() {
     currSrc = idling;
   }
 
+  if(isJumping){
+    jump();
+  }
 
   currentFramePlayer = (currentFramePlayer + 1) % currImgPlayer.length;
   draw(currSrc);
