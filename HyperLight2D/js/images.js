@@ -8,4 +8,7 @@ const moveRightSrc = helper.getSrc('player/move/right/move_right', 12);
 const dashSrc = helper.getSrc('player/dash/side/dash', 11);
 const dashAnimationSrc = helper.getSrc('player/dash/animation/dash_animation', 4);
 
-export {moveLeftSrc, moveRightSrc, idleSrc , dashSrc, dashAnimationSrc};
+const attackingSrc = helper.getSrc('player/attack/side/attack', 19);
+
+
+export {moveLeftSrc, moveRightSrc, idleSrc , dashSrc, dashAnimationSrc, attackingSrc};
